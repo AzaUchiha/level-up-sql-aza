@@ -5,3 +5,7 @@
 -- Stevensen, Stephensen, Stevenson, Stephenson, Stuyvesant
 
 -- There are four people in the party. Today is June 14th.
+
+
+Select * from customers
+where LastName like 'St%'
