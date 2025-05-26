@@ -9,3 +9,9 @@
 
 Select * from customers
 where LastName like 'St%'
+
+select * from reservations r
+join Customers c on r.customerID = c.customerID
+where c.LastName like 'St%'
+and r.partysize = 4
+order by r.Date desc
