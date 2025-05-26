@@ -2,10 +2,17 @@
 -- are available for library patrons to borrow.
 
 
---3 copies (12, 60, 73)
-select count(*) from Books where Title = 'Dracula'
 
+Select
+  (select count(*) from Books where Title = 'Dracula') -- 3 copies in total (BookID: 12, 60, 73)
+-
+  (select count(*) from Loans l -- no. of copies not returned
+  join Books b on l.BookID = b.BookID
+  where b.Title = 'Dracula'
+  and ReturnedDate is null)
+as AvailableCopies
 
+--method 2
 with a as
 (
 select l.BookID, max(l.DueDate), ReturnedDate,
@@ -19,3 +26,4 @@ order by l.BookID Desc
 
 select count(a.Available)
 from a
+where Available =1
