@@ -3,7 +3,7 @@
 -- Provide the due date, the book title, and
 -- the borrower's first name and email address.
 
-select p.FirstName, p.Email, b.Title, l.DueDate
+select  l.DueDate, b.Title, p.FirstName, p.Email
 from Patrons p
 join Loans l on l.PatronID = p.PatronID
 join Books b on b.BookID = l.BookID
